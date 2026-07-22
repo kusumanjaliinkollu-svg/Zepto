@@ -166,6 +166,7 @@ header {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  cursor: pointer;
 }
 #category-items > .category-card:nth-child(4n + 1) > .category-img {
   background-color: rgba(255, 0, 0, 0.348);
