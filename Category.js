@@ -18,7 +18,7 @@ let originalDatas = JSON.parse(localStorage.getItem("clickedCategoryData"))
 let productDatas = [...originalDatas]
 let sidebarTwo = document.getElementById("sidebar-two")
 function displayingProducts(products) {
-  sidebarTwo.innerHTML=""
+  sidebarTwo.innerHTML = ""
   products.forEach((item) => {
     sidebarTwo.innerHTML += `
   <article class="product-cards">
@@ -32,26 +32,29 @@ function displayingProducts(products) {
           <p class="product-title">${item.title}</p>
           <p class="product-brand">${item.brand || "Imported"}</p>
           <div class="product-price">
-            <p class="discount-price">$${Math.round(item.price - (item.price * item.discountPercentage / 100))}</p>
+            <p class="discount-price">$${Math.floor(item.price - (item.price * item.discountPercentage / 100))}</p>
             <p class="actual-price">$${item.price}</p>
             <button class="addBtn">Add</button>
           </div>
-          <p class="ratings"><i class="fa-regular fa-star"></i>${item.rating} (${item.stock})</p>
+          <p class="ratings"><i class="fa-solid fa-star"></i> ${item.rating} (${item.stock})</p>
         </div>
       </article>
   `
   })
+  wishlistIcons()
 }
 displayingProducts(productDatas)
 
 //! Wishlist
-let wishListIcons = document.querySelectorAll(".wishlist>i")
-wishListIcons.forEach((item) => {
-  console.log(item)
-  item.addEventListener("click", () => {
-    item.classList.toggle("clicked")
+function wishlistIcons() {
+  let wishListIcons = document.querySelectorAll(".wishlist>i")
+  wishListIcons.forEach((item) => {
+    console.log(item)
+    item.addEventListener("click", () => {
+      item.classList.toggle("clicked")
+    })
   })
-})
+}
 
 //!FILTER FUNCTIONALITY
 let relevance = document.getElementById("relevance")
@@ -64,7 +67,6 @@ let inStock = document.getElementById("inStock")
 
 function applyingFilters() {
   let filteredProducts = [...originalDatas]
-
   if (priceAsc.checked) {
     filteredProducts.sort((a, b) => a.price - b.price)
   } else if (priceDesc.checked) {
@@ -83,17 +85,17 @@ function applyingFilters() {
   //*In Stock
   if (inStock.checked) {
     filteredProducts = filteredProducts.filter((item) => {
-      return item.stock>0
+      return item.stock > 0
     })
   }
   displayingProducts(filteredProducts)
 }
 
-relevance.addEventListener("change",applyingFilters)
-priceAsc.addEventListener("change",applyingFilters)
-priceDesc.addEventListener("change",applyingFilters)
-discount.addEventListener("change",applyingFilters)
-inStock.addEventListener("change",applyingFilters)
+relevance.addEventListener("change", applyingFilters)
+priceAsc.addEventListener("change", applyingFilters)
+priceDesc.addEventListener("change", applyingFilters)
+discount.addEventListener("change", applyingFilters)
+inStock.addEventListener("change", applyingFilters)
 maxPrice.addEventListener("input", () => {
   maxPriceAmount.innerHTML = maxPrice.value
   applyingFilters()
