@@ -21,7 +21,7 @@ function addToCart(product) {
       title: product.title,
       qty: 1,
       price: product.price,
-      img: product.thumbnail
+      img: product.img
     })
   }
   saveCartItems(cartItems)
