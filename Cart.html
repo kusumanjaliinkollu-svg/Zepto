@@ -30,8 +30,12 @@
         <a href="./Products.html">Products</a>
       </aside>
       <aside id="user-cart">
-        <i class="fa-solid fa-user"></i>
-        <i class="fa-solid fa-cart-shopping" onclick="location.assign('./Cart.html')"></i>
+        <i class="fa-solid fa-heart"
+   onclick="location.assign('./Wishlist.html')"></i>
+        <div class="cart-icon" onclick="location.assign('./Cart.html')">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="cart-count">0</span>
+        </div>
       </aside>
     </section>
   </nav>
@@ -39,39 +43,17 @@
   <main class="cart_container">
     <section class="cart_container_one">
       <h2>My Cart</h2>
-      <p>⚡ Delivery in 10 minutes to Home · MG Road, Bengaluru</p>
+      <p>⚡ Delivery in 10 minutes to Home </p>
     </section>
     <section class="cart_container_two">
-
     </section>
     <section class="cart_container_three">
-      <div class="billing_details">
-        <h3>Bill Details</h3>
-        <div class="billing_info">
-          <p>Item Total (5)</p>
-          <p>$850</p>
-        </div>
-        <div class="billing_info">
-          <p>Delivery Charges</p>
-          <p>$850</p>
-        </div>
-        <div class="billing_info">
-          <p>Platform Fee</p>
-          <p>$850</p>
-        </div>
-        <div class="billing_info">
-          <p>Discount</p>
-          <p>$850</p>
-        </div>
-        <div class="billing_info">
-          <h3>Grand Total</h3>
-          <p>$850</p>
-        </div>
-      </div>
-      <button id="buyNowBtn">Buy Now</button>
+
     </section>
   </main>
   <script src="./Cart.js"></script>
   <script src="./Order.js"></script>
+  <script src="./location.js"></script>
 </body>
+
 </html>

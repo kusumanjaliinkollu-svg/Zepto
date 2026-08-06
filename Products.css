@@ -6,9 +6,22 @@
   font-family: "Poppins", sans-serif;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
 /* ! NAVBAR */
 nav {
-  /* padding: 0rem 5rem; */
   height: 5rem;
   width: 100%;
   background-color: rgb(96, 8, 198);
@@ -16,11 +29,16 @@ nav {
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
+  position: sticky; /* restored for consistency with other pages */
+  top: 0;
+  z-index: 100;
 }
 
 #nav1 {
-  flex-basis: 50%;
+  flex: 1;
+  width: 100%;
   display: flex;
+  align-items: center;
   padding: 0rem 2rem;
 }
 
@@ -44,6 +62,7 @@ nav {
   border-radius: 50%;
   background-color: rgba(226, 228, 235, 0.186);
   margin: 0px 1rem;
+  flex-shrink: 0;
 }
 #address > p:first-child {
   color: #fff;
@@ -72,6 +91,7 @@ nav {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
+  padding: 0.5rem 0.25rem;
 }
 .active {
   color: rgb(255, 223, 32) !important;
@@ -96,12 +116,14 @@ nav {
   flex-direction: column;
 }
 #products-section-1 {
-  height: 15vh;
+  min-height: 15vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-evenly;
-  padding: 0 2rem;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.2rem 2rem;
   position: relative;
 }
 #products-section-1 > input {
@@ -113,8 +135,9 @@ nav {
 }
 #products-section-1 > i {
   position: absolute;
-  top: 27px;
-  left: 55px;
+  top: 35%;
+  left: calc(2rem + 1rem);
+  transform: translateY(-50%);
 }
 #products-section-1 > a {
   text-decoration: none;
@@ -127,15 +150,18 @@ nav {
   min-height: 80vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .product-cards {
   min-height: 20rem;
+  width: 100%;
   max-width: 17rem;
+  margin: 0 auto; /* was margin:1.5rem on every card — now spacing comes from grid gap */
   border-radius: 10px;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin:1.5rem;
 }
 
 .product-card-one {
@@ -194,7 +220,8 @@ nav {
 .product-title {
   font-weight: 600;
   font-size: 0.9rem;
-  word-break: break-all;
+  overflow-wrap: break-word; /* was word-break: break-all */
+  word-break: normal;
 }
 .product-brand {
   font-weight: 500;
@@ -238,15 +265,255 @@ nav {
   color: gold;
 }
 
-.clicked{
+.clicked {
   color: red;
 }
 
-.quantity-btn{
-  background-color:rgb(96, 8, 198);
+.quantity-btn {
+  background-color: rgb(96, 8, 198);
   color: white;
   border-radius: 50%;
   height: 25px;
   width: 25px;
-  border:none;
+  border: none;
+}
+
+.cart-icon {
+  position: relative;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ff3269;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* ================================
+        RESPONSIVE DESIGN
+================================ */
+
+/* Large Laptop */
+@media (max-width: 1200px) {
+  #nav1 {
+    padding: 0 1.5rem;
+  }
+
+  #products-section {
+    width: 90%;
+  }
+
+  #products-section-2 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  nav {
+    height: auto;
+    padding: 15px 0;
+  }
+
+  #nav1 {
+    flex-wrap: wrap;
+    row-gap: 15px;
+  }
+
+  #logo-address,
+  #links,
+  #user-cart {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+
+  #logo-address {
+    gap: 15px;
+  }
+
+  #links {
+    flex-wrap: wrap;
+  }
+
+  #products-section {
+    width: 95%;
+  }
+
+  #products-section-1 {
+    padding: 1rem 1.2rem;
+  }
+
+  #products-section-1 > i {
+    left: calc(1.2rem + 1rem);
+  }
+
+  #products-section-2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #logo {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+    margin: 0;
+  }
+
+  #logo-address {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  #address p {
+    text-align: center;
+  }
+
+  #links {
+    gap: 20px;
+  }
+
+  #links a {
+    font-size: 15px;
+  }
+
+  #user-cart {
+    gap: 25px;
+    font-size: 20px;
+  }
+
+  #products-section {
+    width: 95%;
+    min-height: auto;
+  }
+
+  #products-section-1 {
+    padding: 1rem;
+  }
+
+  #products-section-1 > input {
+    width: 100%;
+    padding: 0px 2.6rem;
+  }
+
+  #products-section-1 > i {
+    left: calc(1rem + 0.8rem);
+  }
+
+  #products-section-2 {
+    min-height: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .product-cards {
+    min-height: 18rem;
+    max-width: 100%;
+  }
+
+  .product-title {
+    font-size: 0.85rem;
+  }
+
+  .discount-price {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 576px) {
+  nav {
+    padding: 15px 0;
+  }
+
+  #nav1 {
+    padding: 0 10px;
+  }
+
+  #links {
+    gap: 15px;
+  }
+
+  #links a {
+    font-size: 14px;
+  }
+
+  #user-cart {
+    gap: 18px;
+    font-size: 18px;
+  }
+
+  #products-section-1 {
+    padding: 0.8rem;
+  }
+
+  #products-section-1 > input {
+    padding: 0px 2.4rem;
+    min-height: 2.3rem;
+  }
+
+  #products-section-1 > i {
+    left: calc(0.8rem + 0.7rem);
+  }
+
+  #products-section-2 {
+    grid-template-columns: 1fr; /* single column on small phones */
+    gap: 1rem;
+  }
+
+  .product-cards {
+    min-height: 22rem;
+  }
+
+  .delivery-time {
+    width: 55%;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 400px) {
+  #links {
+    gap: 10px;
+  }
+
+  #links a {
+    font-size: 13px;
+  }
+
+  #user-cart {
+    font-size: 16px;
+    gap: 15px;
+  }
+
+  #products-section-1 > input {
+    font-size: 0.85rem;
+  }
+
+  .product-title {
+    font-size: 0.8rem;
+  }
+
+  .product-brand {
+    font-size: 0.75rem;
+  }
+
+  .addBtn {
+    padding: 3px 0.6rem;
+    font-size: 0.8rem;
+  }
 }

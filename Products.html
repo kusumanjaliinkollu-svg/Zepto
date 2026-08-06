@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
   <nav>
     <section id="nav1">
@@ -27,8 +29,12 @@
         <a href="./Products.html" class="active">Products</a>
       </aside>
       <aside id="user-cart">
-        <i class="fa-solid fa-user"></i>
-        <i class="fa-solid fa-cart-shopping" onclick="location.assign('./Cart.html')"></i>
+       <i class="fa-solid fa-heart"
+   onclick="location.assign('./Wishlist.html')"></i>
+        <div class="cart-icon" onclick="location.assign('./Cart.html')">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="cart-count">0</span>
+        </div>
       </aside>
     </section>
   </nav>
@@ -43,6 +49,9 @@
     <article id="products-section-2"></article>
   </section>
   <script src="./Cart.js"></script>
+  <script src="Wishlist.js"></script>
   <script src="./Products.js"></script>
+  <script src="./location.js"></script>
 </body>
+
 </html>

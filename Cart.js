@@ -25,6 +25,7 @@ function addToCart(product) {
     })
   }
   saveCartItems(cartItems)
+  updateCartCount();
 }
 
 function incrementQuantity(productId) {
@@ -36,6 +37,7 @@ function incrementQuantity(productId) {
     product.qty++
   }
   saveCartItems(cartItems)
+  updateCartCount();
 }
 
 function decrementQuantity(productId) {
@@ -52,6 +54,7 @@ function decrementQuantity(productId) {
     }
   }
   saveCartItems(cartItems)
+  updateCartCount();
 }
 
 function getProductQuantity(productId) {
@@ -64,3 +67,15 @@ function getProductQuantity(productId) {
   }
   return 0
 }
+
+function updateCartCount() {
+  let cartItems = getCartItems();
+  let total = cartItems.reduce((sum, item) => {
+    return sum + item.qty;
+  }, 0);
+  let badge = document.getElementById("cart-count");
+  if (badge) {
+    badge.innerText = total;
+  }
+}
+updateCartCount();

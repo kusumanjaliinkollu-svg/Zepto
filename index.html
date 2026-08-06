@@ -28,8 +28,12 @@
         <a href="./Products.html">Products</a>
       </aside>
       <aside id="user-cart">
-        <i class="fa-regular fa-user"></i>
-        <i class="fa-solid fa-cart-shopping" onclick="location.assign('./Cart.html')"></i>
+        <i class="fa-solid fa-heart"
+   onclick="location.assign('./Wishlist.html')"></i>
+        <div class="cart-icon" onclick="location.assign('./Cart.html')">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="cart-count">0</span>
+        </div>
       </aside>
     </section>
   </nav>
@@ -39,6 +43,7 @@
       <img src="./assets/hero-background-1.png" alt="banner1">
       <img src="./assets/hero-background-2.png" alt="banner2">
       <img src="./assets/hero-background-1.png" alt="banner3">
+      <img src="./assets/hero-background-2.png" alt="banner2">
     </div>
   </header>
   <!-- !CATEGORY -->
@@ -79,5 +84,6 @@
     <p>194 products across 24 categories.</p>
   </footer>
   <script src="./script.js"></script>
+  <script src="./location.js"></script>
 </body>
 </html>
